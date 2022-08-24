@@ -1,0 +1,84 @@
+//less中的单行注释，注释中的内容不会被解析到css
+/*css中的注释，内容会被解析到css文件中*/
+
+//在less中所有i的数值都可以直接进行运算 如+-*/
+
+//还可以用 @import“xxx.less” 把另一个less文件引入进来
+
+//在less中可以按照包含关系写样式，编译会自动处理
+.box1{
+    background-color: #bfa;
+
+    .box2{
+        background-color: #ff0;
+
+        .box4{
+            color: red;
+        }
+    }
+
+    .box3{
+        background-color: orange;
+    }
+}
+
+//变量语法：@变量名
+@a:200px;
+@b:#bfa;
+@c:box6;
+
+.box5{
+    //直接使用，以 @变量名 的形式使用即可
+    width: @a;
+    color: @b;
+
+    //&表示外面这一层这个东西
+    &:hover{
+        color: #bfa;
+    }
+}
+
+//作为类名，或者一部份值使用时必须以 @{变量名} 的形式使用
+@{c}{
+    width: @a;
+}
+
+.p1{
+    width: 100px;
+    height: 200px;
+}
+//:extend() 对当前选择器 扩展 指定选择器的样式（继承 选择器分组）
+.p2:extend(.p1){
+    color: rebeccapurple;
+}
+
+.p3{
+    //直接引用，相当于复制，叫mixin混合
+    .p1();
+}
+
+//使用类选择器的时候可以在选择器后天就一个括号，实际上创建了一个方法等待调用，创建了一个mixins 混合 ，这个时候引用的时候 可以不写括号。
+.p4(){
+    width: 100px;
+    height: 100px;
+}
+.p5{
+    .p4;
+}
+
+//混合函数 在混合函数中可以直接设置变量，调用的时候传参
+.test(@w,@h,@bgcolor){
+    width: @w;
+    height: @h;
+    border: 1px solid @bgcolor;
+}
+div{
+    //调用混合函数，按顺序传参
+    .test(200px,300px,#bfa);
+
+    //还可以不按顺序，但带上名字就ok
+    //.test(@bgcolor:red,@h:100px,@w:200px);
+
+    //还可以在原本函数参数里设置默认值。
+}
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #007AFF;
+        }
+
+        body {
+            height: 2000px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+
+            var box1 = document.getElementById("box1");
+
+            box1.onmousewheel = function (event) {
+
+                var event = event || window.event;//兼容ie
+                
+                if (event.wheelDelta > 0 || event.detail < 0) {//兼容火狐detail
+                    console.log("向上滚动了！");
+
+                    box1.style.height = box1.clientHeight > 10 ? box1.clientHeight - 10 + "px" : box1.clientHeight;
+
+                } else {
+                    console.log("向下滚动了！");
+
+                    box1.style.height = box1.clientHeight + 10 + "px";
+                };
+
+                //使用ael绑定响应函数时需要用event来取笑默认行为event.preventDefault但Ie8不支持，直接调用会报错
+                event.preventDefault && event.preventDefault();//兼容火狐
+
+                //滚轮滚动的时候浏览器的滚动条会一起滚动，这是浏览器的默认行为，可以取消，返回false
+                return false;
+            };
+
+            bind(box1, "DOMMouseScroll", box1.onmousewheel);//兼容火狐DOMMouseScroll
+            //封装监听事件函数
+            function bind(obj, methds, callback) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(methds, callback, false);
+                } else {
+                    obj.attachEvent("on" + methds, function () {
+                        callback.call(obj);
+                    })
+                }
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

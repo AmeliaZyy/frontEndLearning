@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1.一个重要的内置关系：VueComponent.prototype.__proto__ === Vue.prototype
+        2.为什么要有这个关系：让组件实例对象vc可以访问到Vue原型上的属性、方法。
+     -->
+
+    <div id="root">
+        <nana></nana>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+    Vue.prototype.x = 99;//这里加给了Vue原型属性
+
+    const nana = Vue.extend({
+        template:`
+            <div>
+                <h2>her name is {{name}}</h2>
+                <button @click=showX>click to show x</button>
+            </div>
+        `,
+        data(){
+            return{
+                name:'Nana'
+            }
+        },
+        methods: {
+            showX(){
+                console.log(this,this.x)//这里的this是vc哦，也可以拿到vm原型的x
+            }
+        },
+    })
+    new Vue({
+        el: '#root',
+        data: {
+        },
+        components:{
+            nana
+        }
+    })
+
+    /*
+    //创建一个构造方法
+    function Demo() {
+        this.a = 1;
+        this.b = 2;
+    }
+    //创建一个Demo的实例对象
+    const d = new Demo();
+
+    console.log(Demo.prototype);//显式原型属性
+
+    console.log(d.__proto__);//隐式原型属性
+
+    console.log(Demo.prototype === d.__proto__);
+
+    //程序员通过显式原型属性操作原型对象，追加一个x属性，值99
+    Demo.prototype.x = 99;
+    console.log('@', x, d)
+    */
+
+</script>
+
+</html>

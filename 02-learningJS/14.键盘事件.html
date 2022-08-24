@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cube {
+            width: 100px;
+            height: 100px;
+            background-image: -webkit-linear-gradient(90deg, pink, aqua);
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            //定义一个变量表示方向,通过修改它影响方向
+            var dir;
+            //定义一个变量表示移动速度
+            var speed = 10;
+
+            var atimer;
+
+
+            var cube = document.getElementById("cube");
+
+            //按下案件
+            document.onkeydown = function (event) {
+                event = event || window.event;
+
+                //清除定时器
+                clearInterval(atimer);
+
+                //当用户按ctrl以后，速度加快
+                if (event.ctrlKey) {
+                    speed = 20;
+                } else {
+                    speed = 10;
+                }
+                //alert(event.keyCode);
+                //据此提醒可以看出上下左右分别是38 40 37 39
+                //使dir等于按键值
+                dir = event.keyCode;
+
+                //开启一个定时器控制div移动，避免开始的卡顿.。。有问题啊，为什么我写了这个过几次还是会卡顿啊
+                atimer = setInterval(function () {
+                    switch (dir) {
+                        case 38:
+                            cube.style.top = cube.offsetTop - speed + "px";
+                            break;
+                            
+                        case 40:
+                            cube.style.top = cube.offsetTop + speed + "px";
+                            break;
+                        case 37:
+                            cube.style.left = cube.offsetLeft - speed + "px";
+                            break;
+                        case 39:
+                            cube.style.left = cube.offsetLeft + speed + "px";
+                            break;
+                    }
+                }, 10);
+            }
+
+            //送开按键
+            document.onkeyup = function () {
+                //松开时方向为0
+                dir = 0;
+                
+                //清除定时器
+                clearInterval(atimer);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="cube">
+
+    </div>
+</body>
+
+</html>

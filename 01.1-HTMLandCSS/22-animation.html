@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .animationbox{
+            width: 300px;
+            height: 100px;
+            margin: 0 auto;
+            background-image: url(./tupian/R-C.png);
+            animation: quanhuang 1s steps(8) infinite;
+        }
+
+        /* 创建关键帧 */
+        @keyframes quanhuang {
+            from{
+                background-position: 0 -108px;
+            }
+
+            to{
+                background-position: -600px -108px;
+            }
+        }
+
+        .trumpbox{
+            width: 125px;
+            height: 129.5px;
+            margin: 0 auto;
+            background-image: url(./tupian/Trump.png);
+            animation: trump 1s steps(6) infinite;
+        }
+        @keyframes trump {
+            from{
+                background-position: -15px 0;
+            }            
+            to{
+                background-position: -775px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animationbox">
+
+    </div>
+
+    <div class="trumpbox">
+
+    </div>
+</body>
+</html>

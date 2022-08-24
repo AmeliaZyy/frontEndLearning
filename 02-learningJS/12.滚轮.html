@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            var box1 = document.getElementById("box1");
+
+            //老师教的是onmousewheel，但我查了之后发现过时了，现在火狐应该也可以，但在 IE 中，只有通过 addEventListener() 方法才支持 wheel 事件。 
+            //草你妈差点忘了传入event
+            box1.onmousewheel = function (event) {
+
+                //为什么这里加个var才行？因为刚刚忘了传入event参数呵呵呵
+                event = event || window.event;
+
+                //event.wheelDelta向上滚正，下滚负的
+                //火狐是event.detail 向上滚负值 下滚正
+                //alert(event.wheelDelta);//120
+                //alert(event.deltaY);//-100
+                //alert(event.detail);//0
+
+                if (event.wheelDelta > 0 || event.detail < 0) {
+                    box1.style.height = box1.clientHeight > 10 ? box1.clientHeight - 10 + "px" : box1.clientHeight;
+                } else {
+                    box1.style.height = box1.clientHeight + 10 + "px";
+                }
+            }
+
+            //去掉on就行了是吧哈哈哈不是
+            bind(box1, "DOMMouseScroll", box1.onmousewheel);//兼容火狐DOMMouseScroll
+
+            //所以还是会需要调用咱们的bind
+            function bind(obj, eventstr, callback) {
+                if (obj.addEventListener) {
+                    //大部分浏览器兼容的方式
+                    obj.addEventListener(eventstr, callback, false);
+                    //ade的三个参数是事件的字符串（不加on)、回调函数事件触发时会被调用的函数、是否在捕获阶段触发事件
+
+                } else {
+                    //IE8以下,ae的两个参数，事件字符串要on、回调函数
+                    obj.attachEvent("on" + eventstr, function () {
+                        //在匿名函数中调用回调函数，原本attachEvent是window的，在这里回调传入obj，就会使this变回事件对象
+                        callback.call(obj);
+                    })
+                }
+            }
+            //使用ael绑定响应函数时需要用event来取笑默认行为event.preventDefault但Ie8不支持，直接调用会报错
+            event.preventDefault && event.preventDefault();//兼容火狐
+
+            //滚轮滚动的时候浏览器的滚动条会一起滚动，这是浏览器的默认行为，可以取消，返回false
+            return false;
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+
+    </div>
+</body>
+
+</html>

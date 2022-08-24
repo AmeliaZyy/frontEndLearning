@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*css注释 p是标签选择器*/
+        p{
+            /*文字颜色变*/
+            color: blueviolet;
+            color: skyblue;/*层叠性：若重复，后者生效*/
+            font-size: 30px;/*px是像素,这里是字体大小*/
+            font-weight: 700;/*推荐用数字加粗而不是字母*/
+            background-color: pink;
+            width: 600px;
+            /*height: 100px;*//*背景宽高*/
+
+            line-height: 1.5;/*行高=上间距+文本高度+下间距*/
+        }
+        h1{
+            font-weight: 400;/*变细*/
+            font-style: italic;/*倾斜与否*/
+        }
+        em{
+            font-style: normal;
+        }
+        div{
+            /*若电脑没有前面这些字体，会按照后面的显示*/
+            font-family: 微软雅黑，黑体，sans-serif;
+        }
+        #ind {
+            /*默认字号16px但可改，em是不变的字大小*/
+            text-indent: 2em;
+            font-size: 40px;
+            margin: 0 auto;
+            
+        }
+        body{
+            text-align: center;
+            margin: 0 auto;/*加在这里没鸟用*/
+        }
+    </style>
+    <!-- 内嵌式放置css -->
+    <!-- 一共有三种方法：内嵌适合小案例/外链适合项目/行内配合js使用 -->
+</head>
+<body>
+    <p>这是一个p标签</p>
+    <h1>一级标题</h1>
+    <em>html倾斜的标签</em>
+    <div>字体哈哈哈哈哈哈</div>
+    <p id="ind">StringBuilder 的效率更高，因为 StringBuffer 对方法加了同步锁，而 StringBuilder 没有对方法加同步锁。</p>
+    <p>虽然 StringBuilder 的效率更高，但是因为没有对方法加同步锁，因此在多线程环境下不保证线程安全，只适合单线程环境，而 StringBuffer 可以用于多线程环境。</p>
+</body>
+</html>

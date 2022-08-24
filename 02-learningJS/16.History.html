@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+                /*
+                history：
+                length -可以获取到当次访问的链接数量
+                back（） -可以退回上页
+                forward（） -可以跳转下页
+                go（） -需要一个整数作为参数，正数前进负数后退，可以用来跳转到指定的页面，比较灵活
+                */
+                history.go(1);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <button id="btn">this is a button</button>
+    <br>
+    <br>
+    <!-- 妈的差点忘了加http -->
+    <a href="http://www.baidu.com">this is baidu</a>
+</body>
+</html>

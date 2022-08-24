@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            perspective: 800px;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .biaopan{
+            position: relative;
+
+            width: 500px;
+            height: 500px;
+
+            background-color: silver;
+            border-radius: 50%;
+
+            background-image: url(./pic/clook.webp);
+            background-size: cover;
+            
+
+        }
+
+        .biaopan>div{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .biaopan .secwrap{
+            width: 450px;
+            height: 450px;
+
+            animation: clock 60s steps(60) infinite;
+        }
+        .biaopan .miaozhen{
+            margin: 0 auto;
+
+            width: 2px;
+            height: 50%;
+
+            background-color: pink;
+        }
+
+        .minwrap{
+            height: 80%;
+            width: 80%;
+            /* background-color: orange; */
+
+            animation: clock 3600s infinite;
+        }
+
+        .minwrap .min{
+            margin: 0 auto;
+
+            height: 50%;
+            width: 5px;
+            background-color: rgba(107, 102, 61, 0.8);
+        }
+
+        .hourwrap{
+            height: 70%;
+            width: 70%;
+            /* background-color: #fff; */
+            animation: clock 43200s infinite;
+        }
+
+        .hourwrap .hour{
+            margin: 0 auto;
+
+            height: 50%;
+            width: 7px;
+            background-color: black;
+        }
+        
+
+        @keyframes clock {
+            from{
+                transform: rotateZ(0deg);
+            }
+            to{
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="biaopan">
+
+        <div class="minwrap">
+            <div class="min"></div>
+        </div>
+
+        <div class="hourwrap">
+            <div class="hour"></div>
+        </div>
+
+        <div class="secwrap">
+            <div class="miaozhen"></div>
+        </div>
+
+    </div>
+</body>
+</html>

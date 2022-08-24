@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin: 0 auto;
+            text-align: center;
+            width: 800px;
+            
+        }
+        #plat{
+            color: #808080;
+        }
+        /*.name是类选择器*/
+        .name{
+            color: skyblue; 
+            font-weight: 700;   
+        }
+        h3,p{
+            text-align: left;
+            text-indent: 2em;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>
+            HashMap 虐我千百遍，我待 HashMap 为初恋
+        </h1>
+        <span id="plat">leetcode网友：</span>
+        <span class="name">飞天小牛肉&nbsp;</span>
+        <span id="plat">发布于3小时前</span>
+        <a href="www.baidu.com">收藏文章</a>
+        <hr>
+        <h3>1. 讲讲 HashMap 的底层结构和原理</h3>
+        <p>
+            HashMap、HashTable、ConcurrentHashMap 这一套感觉今年面试都不怎么问了，场景题越来越多，求职的门槛越来越高，这种常见的面试题问出来大概率就是要送波分了。
+        </p>
+        <p>HashMap 就是以 Key-Value 的方式进行数据存储的一种数据结构嘛，在我们平常开发中非常常用，它在 JDK 1.7 和 JDK 1.8 中底层数据结构是有些不一样的。总体来说，JDK 1.7 中 HashMap 的底层数据结构是数组 + 链表，使用 Entry 类存储 Key 和 Value；JDK 1.8 中 HashMap 的底层数据结构是数组 + 链表/红黑树，使用 Node 类存储 Key 和 Value。</p>
+        <p>当 Hash 冲突严重时，在数组上形成的链表会变的越来越长，由于链表不支持索引，要想在链表中找一个元素就需要遍历一遍链表，那显然效率是比较低的。为此，JDK 1.8 引入了红黑树，当链表的长度大于 8 的时候就会转换为红黑树，不过，在转换之前，会先去查看 table 数组的长度是否大于 64，如果数组的长度小于 64，那么 HashMap 会优先选择对数组进行扩容 resize，而不是把链表转换成红黑树。</p>
+    </div>
+</body>
+</html>

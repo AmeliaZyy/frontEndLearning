@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../vue.js"></script>
+</head>
+<style>
+    * {
+        margin-top: 20px;
+    }
+
+    .demo1 {
+        height: 50px;
+        background-color: cornflowerblue;
+    }
+
+    .box1 {
+        height: 100px;
+        width: 100px;
+        background-color: yellow;
+        padding: 5px;
+    }
+
+    .box2 {
+        height: 50px;
+        width: 50px;
+        background-color: red;
+    }
+
+    .list{
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        overflow: auto;
+    }
+    .list li {
+        height: 100px;
+    }
+</style>
+
+<body>
+    <!-- 
+        Vue中的事件修饰符：
+        1.prevent：阻止默认事件（常用）
+        2.stop：阻止事件冒泡（常用）
+        3.once：事件只触发一次（常用）
+        4.capture：使用事件的捕获模式
+        5.self：只有event.target是当前操作的元素时才触发事件
+        6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕
+     -->
+    <div id="root">
+        <h2>welcome to {{name}}</h2>
+
+        <!-- 阻止默认事件 -->
+        <a href="http://www.baidu.com" @click.prevent="showInfo">click to show information</a>
+
+        <!-- 阻止事件冒泡 -->
+        <div @click="showInfo" class="demo1">
+            <button @click.stop="showInfo">阻止冒泡</button>
+            <a href="http://www.baidu.com" @click.prevent.stop="showInfo">点我</a>
+            <!-- .prevent.stop就是先停止默认行为再阻止冒泡 -->
+        </div>
+
+        <!-- 事件只触发一次 -->
+        <button @click.once="showInfo">只触发一次</button>
+
+        <!-- 使用捕获模式 -->
+        <div class="box1" @click.capture="showA(1)">
+            <!-- 会从冒泡的由内向外变成先外后内的捕获，事件从捕获到冒泡，这样是让事件在捕获阶段就触发 -->
+            div1
+            <div class="box2" @click="showA(2)">
+                div2
+            </div>
+        </div>
+
+        <!-- 只有event.target是当前操作的元素时才触发事件 -->
+        <div @click.self="showInfo" class="demo1">
+            <!-- 不给外面加.self的时候，冒泡出去发生事件时，外面的event的target不是它但它也触发了showinfo，也是一种阻止冒泡-->
+            <button @click="showInfo">event的target是我吗</button>
+        </div>
+
+        <!-- 事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+        <ul @wheel.passive="demo" class="list">
+            <!-- 可以看出在没有.passive的时候，大量的后台输出执行会导致原本的滚轮事件卡顿，加上之后优先执行默认行为，后台输出不耽误~ -->
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+    new Vue({
+        el: '#root',
+        data: {
+            name: 'the new world'
+        },
+        methods: {
+            showInfo(e) {
+                // e.preventDefault()//e是传参进来的event的简写，这个方式可以阻止默认行为，在这个链接表现为不跳转了。也可以在上方链接中直接加修饰符.prevent
+                // e.stopPropagation();//阻止冒泡
+                // alert('whattttt')
+                console.log(e.target);
+            },
+            showA(a) {
+                console.log(a)
+
+            },
+            demo(){
+                for(let i=0;i<10000;i++){
+                    console.log('hhh')
+                };
+                console.log('so tired')
+            }
+
+        },
+    })
+</script>
+
+</html>

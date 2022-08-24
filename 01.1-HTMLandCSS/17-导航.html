@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            height: 40px;
+            background-color: #333;
+            /* text-align: center; */
+        }
+        /* 在.content前面加上.box1之后，靠左了不居中了 */
+        .box1.content{
+            width: 1200px;
+            height: 40px;
+            margin: 0 auto;
+            /* background-color:black; */
+            text-align: center;
+        }
+        a:hover{
+            color: #fff;
+        }
+        a::before{
+            content: "|"; 
+            color: #b0b0b0;
+        }
+        a::after{
+            content: "|";
+        }
+        a{  
+            font-size: 12px;
+            line-height: 40px;
+            text-decoration: none;
+            color: #b0b0b0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="content">
+            <a href="#">小米网</a>
+            <a href="#">MIUI</a>
+            <a href="#">米聊</a>
+            <a href="#">游戏</a>
+            <a href="#">多看阅读</a>
+            <a href="#">云服务</a>
+            <a href="#">小米网移动版</a>
+            <a href="#">问题反馈</a>
+        </div>
+    </div>
+</body>
+</html>

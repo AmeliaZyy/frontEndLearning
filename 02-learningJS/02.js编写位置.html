@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 可以写到外部js文件中，通过script标签的src属性引入。推荐。
+        一旦引入了外部文件，不能再在同一个script标签内部编写代码，
+        若有需要，可以另外开一个script标签用于写内部js -->
+
+    <!-- <script></script>
+    可以直接写在css的script标签中 -->
+    
+</head>
+<body>
+    <!-- 可以将js代码编写到标签的onclick属性中 点击的时候才会执行 -->
+    <button onclick="alert('你点我干嘛鸭~')">点我一下</button>
+    <!-- 可以将js代码写在超链接的herf属性中 点击执行-->
+    <a href="javascript:alert('让你点你就点');">你也点我一下</a>
+    <!-- 写在标签中不方便维护 -->
+</body>
+</html>

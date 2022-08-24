@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        哈哈哈页面上就这点内容了
+     -->
+    <div id="root">
+        <app></app>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+    //让这个是个儿子组件吧，儿子组件需要先定义哦
+    const school = Vue.extend({
+        template:`
+        <div>
+            <h2>I was graduated on {{schoolName}}</h2>
+        </div>
+        `,
+        data(){
+            return{
+                schoolName:'Hainan University'
+            }
+        }
+    });
+    //简写,不写extend的话会在注册的时候自动包上
+    //让这个当爸爸组件，加个components然后把样式和定义都放这里面就像
+    const ss ={
+        name:'eihei',
+        template:`
+        <div>
+            <h2>I am a badass {{position}}</h2>
+            <school></school>
+        </div>
+        `,
+        data(){
+            return{
+                position:'front-end developer'
+            }
+        },
+        components:{
+            school
+        }
+    };
+
+    //来一个和爸爸组件平级的
+    const weather =Vue.extend({
+        template:`
+        <div>
+            <h3>the weather there is so {{weather}}</h3>
+        </div>
+            `,
+        data(){
+            return{
+                weather:'hot'
+            }
+        },
+    });
+
+    //一般会有一个叫app的当一家之主啊，把它们全包起来，爸爸管了儿子，这个爷爷不用管爸爸的儿子哈，管这个爸爸就ok
+    const app = Vue.extend({
+        template:`
+        <div>
+            <socool></socool>
+            <weather>
+        </div>
+        `,
+        components:{
+            socool:ss,
+            weather
+        }
+    });
+
+
+    // Vue.component('so-cool',ss)
+    Vue.component('app',app);
+    new Vue({
+        el: '#root',
+        // data: {
+        //     weather:'hot'
+        // },
+        // components:{
+        //     school
+        // }
+    })
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!-- 
+    优先级：
+    内联样式1000，
+    id选择器100，
+    类和伪类10，
+    元素选择器1，
+    通配选择器0，
+    继承的样式没有优先级。
+
+比较优先级时需要将一个选择器的所有优先级相加计算。选择器的累加不会超过其最大的数量级，类再高不会超过id，优先级相同时靠后的优先。
+某样式后添加！important变成最高优先级。慎用，改起来会很麻烦。
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p#onehd{
+            color: royalblue;
+        }
+        /*交集选择器紧挨着，优先级100+1*/
+
+        #onehd,.ten{
+            color: yellowgreen;
+        }
+        /*并集选择器，逗号隔开，优先级110？*/
+
+        p:nth-child(4){
+            color: fuchsia;
+        }
+        /*类和伪类，优先级20？*/
+
+        p:hover{
+            color: black;
+        }
+
+        a:hover{
+            text-decoration: none;
+            background-color: #bfa;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p style="color: #bfa;">我最高，我是内联样式</p>
+        <p id="onehd">我的优先级是100</p>
+        <!-- 你会发现这样写了的话id比hover伪类显示更优先，hover无法包括这个 -->
+        <p class="ten">我的优先级是10</p>
+        <p>我啥也没，我是1</p>
+        <a href="#">井号键是临时链接</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            width: 300px;
+            height: 500px;
+            margin: 0 auto;
+            
+        }
+
+        .content{
+            width: 100%;
+            height: 80%;
+            overflow: auto;
+            background: -webkit-linear-gradient(135deg, #7A88FF,rgb(255, 119, 226));
+            
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            //那我先获取两个按钮吧 还有p的
+            var checkbox = document.getElementById("checkbox");
+            var submit = document.getElementById("submit");
+            //var info = document.getElementById("hhh");
+            
+            var content = document.getElementById("content");
+            //默认两个按钮不可以点击
+            
+
+            //p的oncroll状态函数 为什么不能设置在p上只能设置在content这个div上
+            content.onscroll = function(){
+                //这个判断条件表示滚动条滑到底了
+                if(content.scrollHeight - content.scrollTop == content.clientHeight){
+                    checkbox.disabled = false;
+                    submit.disabled = false;
+                }
+            }
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <h3>欢迎亲爱的用户注册</h3>
+        <div class="content" id="content">
+            <p id="hhh">
+                亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。亲爱的用户，请仔细阅读，如果不读完你就注册不了。
+            </p>
+        </div>
+        <br>
+        <!-- 默认两个按钮不可点击 -->
+        <input type="checkbox" id="checkbox" disabled="disabled">我已仔细阅读
+        <input type="submit" value="注册" id="submit" disabled="disabled">
+    </div>
+</body>
+
+</html>

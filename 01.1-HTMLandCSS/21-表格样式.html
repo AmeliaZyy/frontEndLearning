@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 如果给表格和td单元格都设置了边框
+            有可能显示成看起来像双线边框
+            解决方法:
+                border-spacing: 0px;
+                border-collapse:collapse */
+
+        table{
+            border: 1px saddlebrown solid;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px saddlebrown solid;
+            height: 100px;
+            width: 200px;
+
+            /* 如何给表格内部元素设置居中呢
+                用vertical-align和text-align就ok 
+                有时候别的元素，比如block，可以设置
+                display：table-cell，也就可以用这个居中了*/
+            vertical-align: center;
+            text-align: center;
+
+        }
+
+        /* 尝试用跳行变色吧，nth孩子的奇偶 可以直接给tr设置，不是td哦
+            奇数 odd 2n+1
+            偶数 even 2n*/
+        /* 可以用tbody，但是tr不是table的直接后代，
+        它如果没写tbody，网页会自动生成tbody哦 */
+        tbody>tr:nth-child(odd){
+            background-color: tomato;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- thead表格头部 tbody tfoot表脚 -->
+    <!-- 跨行合并rowspan 跨列合并colspan 不能跨结构比如body和foot合并-->
+    <table border="1">
+        <caption><strong>信息更新了</strong></caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>尺寸</th>
+                <th>值班日期</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>韩国炸鸡</td>
+                <td rowspan="2">36C</td>
+                <td>周六晚</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>北京烤鸭</td>
+                
+                <td>周五晚</td>
+                <td>1500</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>这是表脚</td>
+                <td colspan="2">没有了</td>
+                
+                <td>卖光了</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

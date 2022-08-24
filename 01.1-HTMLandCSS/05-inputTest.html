@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- input标签可以通过type属性值不同展示不同效果 -->
+    <!-- 想要提交和重置生效的话，需要把可以生效的范围input放到同一个form结构里 -->
+    <!-- action就是之后数据上传的地址 -->
+    <form action="">
+        请输入账号：<input type="text" placeholder="手机号/身份证号/邮箱">
+        <br>
+        请输入密码：<input type="password" placeholder="身份证后六位">
+        <br>
+        <br>
+        单选框：<input type="radio">
+        <br>
+        多选框：<input type="checkbox">
+        <br>
+        <br>
+        上传文件：<input type="file" multiple>
+        <br>
+        <br>
+        点击此处提交<input type="submit">
+        <br>
+        <br>
+        重置按钮<input type="reset">
+        <br>
+        <br>
+        <input type="botton" value="普通按钮">
+    </form>
+    
+    <hr>
+    选择服务：<input type="radio" name="serv">北京烤鸭
+    <input type="radio" name="serv">韩国炸鸡
+    <input type="radio" name="serv" checked>不了不了身体要紧
+    <br>
+    <br>
+    身体好，我要多选：
+    <input type="checkbox" name="ser">BeijingDuck
+    <input type="checkbox" name="ser">KoreanChick
+    <input type="checkbox" name="ser">TokyoHot
+    <br>
+    <br>
+    下拉菜单<select name="" id="">
+        <option value="" selected>不了不了</option>
+        <option value="">BeijingDuck</option>
+        <option value="">KoreanChick</option>
+        <option value="">TokyoHot</option>
+    </select>
+    <hr>
+    <br>
+    <!-- 文本域，col宽度，rows高度，之后多用css设置 -->
+    欢迎提出你的&nbsp;&nbsp;&nbsp;宝贵意见
+    <textarea name="" id="" cols="60" rows="20"></textarea>
+    <br>
+    <br>
+    您的性别：
+    <input type="radio" name="sex" id="11"><label for="11">男</label>
+    <label><input type="radio" name="sex" id="">女</label>
+
+
+</body>
+</html>

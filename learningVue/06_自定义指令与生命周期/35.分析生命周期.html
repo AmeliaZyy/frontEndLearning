@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../vue.js"></script>
+
+<body>
+    <!-- 
+        
+            
+     -->
+    <div id="root">
+        <h2>当前的n值是：<span v-text="n"></span></h2>
+        <button @click="add">点我n++</button>
+        <button @click="bye">毁灭按钮</button>
+
+
+    </div>
+
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+
+    new Vue({
+        el: '#root',
+        /*
+        template: `
+        //这外面不能用<template>标签去包裹作为根标签，会报错说不能用它当作组件根标签
+        <div>//得要一个根元素包住会替换掉root那个
+            <h2>当前的n值是：<span v-text="n"></span></h2>
+            <button @click="add">点我n++</button>
+        </div>
+        `,
+        */
+        data: {
+            n: 1
+        },
+        methods: {
+            add() {
+                console.log('adding~~是原生的哦');
+                this.n++;
+            },
+            bye(){
+                console.log('bye~');
+                this.$destroy();
+            }
+        },
+        watch:{
+            n(){
+                console.log('n变了')
+            }
+        },
+        beforeCreate() {
+            console.log('beforeCreate');
+            // console.log(this);//vue
+            // debugger;
+        },
+        created() {
+            console.log('create');
+            // console.log(this);//vue
+            // debugger;
+        },
+        beforeMount() {
+            console.log('beforeMount');
+            // console.log(this);//vue
+            // debugger;
+        },
+        mounted() {
+            console.log('mounted');
+            // console.log(this);//vue
+            // debugger;
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate');
+            // console.log(this.n);//n更新了，页面还没有
+            // debugger;
+        },
+        updated() {
+            console.log('Updated');
+            // console.log(this.n);//n更新了，页面也更新了
+            // debugger;
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy');
+            this.add();//后台显示但不会再更新到页面了
+        },
+        destroyed() {
+            console.log('destroyed');
+        },
+    })
+
+
+</script>
+
+</html>

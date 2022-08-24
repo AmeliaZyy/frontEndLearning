@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        // 用于定义一一些字符串的规则，可以根据正则表达式检查一个字符串是否符合规则，或者将符合规则的内容提取出来
+        //参数1是匹配内容正则表达式，参数二是匹配模式
+
+        //用构造函数创建更加灵活
+        var reg = new RegExp("a","ig");
+        var str = "a";
+        console.log(reg.test(str));//true
+
+        //用字面量创建更加简单
+        reg1 = /a/i;
+        console.log(typeof reg1);//object
+        console.log(reg1.test("abs"));//true
+
+        //或可以用|表达，也可以用[]
+        reg2=/a|b/i;
+        console.log(reg2.test("acd"));//true
+
+        reg3=/[A-z]/;//这样也能不分大小写
+        console.log(reg3.test("superb"));
+
+        reg4=/a[bcd]e/;//检查是否有abe 或ace 或ade
+        console.log(reg4.test("aasdafweasade"));
+
+        reg5=/[^ab]/;//other than ab, as long as 'ab' is not the only tring in this then it's true
+        console.log(reg5.test("absdaf"));
+
+        var str1 = "1a2b3d4e5l6h";
+        var rslt = str1.split(/[A-z]/);
+        console.log("用正则表达式结合split以字母分离字符串的结果是："+rslt);
+
+        str2 = "hello abc hello aec adf";
+        rslt = str2.search(/a[bef]c/);
+        console.log("用正则表达式结合search查找搜寻到的第一个索引是："+rslt);
+
+        console.log("用正则表达式结合match，然后打开g全局匹配到的所有内容提取出来结果是："+str1.match(/[a-z]/ig));
+
+        console.log("用正则表达式结合replace替换所有匹配结果为哈哈的结果是："+str1.replace(/[a-z]/ig,"哈哈"));
+
+        //通过量词{n}可以设置一个内容出现的次数,两次只对他前面的一个内容起作用，可以把前面想一起的用括号括起来
+        reg = /a{3}/;
+        console.log(reg.test("aabc"));
+        reg = /a{1,3}/;
+        console.log(reg.test("aabc"));
+
+        var phnb = "13967890123saff";
+        reg=/^1[3-9][0-9]{9}$/;//这样可以按顺序表示规则
+        if(reg.test(phnb)){
+            console.log("success");
+        }else{
+            console.log("wrong,plz enter your pnb again");
+        }
+
+        /*
+        检查一个字符串中是否含有.
+        但.表示任意字符
+        在正则表达式中使用\作为转义字符
+        \.表示.
+        \\表示\
+        注意\在字符串里也是转义字符所以也要用2个
+        */
+       reg = /\./;//-->.
+       reg = new RegExp("\.");
+       console.log(reg.test("daf.ea"));
+
+       reg = /\\/;//这里打出来是两个斜杠？
+       reg = new RegExp("\\\\");//只能打四个出两个吗，似乎不能只打两个斜杠？
+       console.log(reg);
+       console.log(reg.test("sdfjj\\"));//但是这里却不能只有一个
+
+        var str = prompt("plz enter your email");
+        //接受用户输入
+        //www.ameliaz411@iCloud.com
+        //^\w{3,}字母开头至少3个 (\.\w+)* 有一个点点和至少一个字母 这一堆可有可无 @[A-z0-9]+艾特和数字字母至少一个 (\.[A-z]{2-5}){1-2}$ 一个点，数字字母2-5个，这一堆可以只有一遍可以重复两遍并以此结尾
+        var emailReg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
+        
+        if(emailReg.test(str)){
+            alert("thanks!")
+        }else{
+            alert("wrong format!")
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

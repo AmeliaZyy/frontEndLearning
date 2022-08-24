@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "aothor": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "hhhhhhhhhhhh",
+      "aothor": "anonym"
+    },
+    {
+      "title": "today the weather is not so bad",
+      "author": "me",
+      "id": 3
+    },
+    {
+      "title": "就是改一下",
+      "author": "改了",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comments",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

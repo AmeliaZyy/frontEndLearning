@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../resetcss/reset.css">
+    <link rel="stylesheet" href="../font/css/font-awesome.css">
+    <style>
+        body{
+            background-color:rgb(240, 239, 238);
+        }
+
+        .clearfix::before,
+        .clearfix::after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        .topbar{
+            height: 100px;
+            width: 100%;
+            background-color:rgb(253, 254, 253);
+            border-bottom: 1px solid rgb(218, 220, 218);
+            box-shadow: 0px 2px 10px rgb(224, 226, 224);
+            position: relative;
+
+        
+        }
+
+        /* layout */
+        .nameme{
+            /* width: 10%; */
+            height: 100%;
+            display: inline-block;
+            position: absolute;
+            left: 20%;
+                        
+        }
+        .nameme div{
+            /* 此处高度和行高写死就可以居中 */
+            height: 50px;
+            
+            /* margin: 0 auto; */
+            /* vertical-align: middle; */
+            font-family:'Times New Roman', Times, serif;
+            text-align: center;
+            color: rgb(53, 54, 53);
+        }
+
+        .nameme .name1{
+            font-size: 30px;
+            font-weight: bolder;
+            line-height: 60px;
+            
+        }
+        .nameme .name2{
+            font-size: large;
+            font-weight: 600;
+        }
+
+        .searcharea{
+            height: 100px;
+            line-height: 100px;
+            display: inline-block;
+            position: absolute;
+            left: 40%;
+            /* vertical-align: middle; */
+            
+        }
+        .searcharea input,
+        .searcharea button{
+            height: 35px;
+            border-radius: 10px;
+            border: rgb(230, 232, 230) solid 2px;
+        }
+
+        .searcharea input{
+            width: 300px;
+            
+        }
+
+        .searcharea button{
+            width: 35px;
+            font-size: large;
+            color: rgb(178, 177, 176);
+        }
+
+        .userinfo{
+            position: absolute;
+            left: 70%;
+            width: auto;
+            height: 100px;
+            line-height: 100px;
+        }
+        .touxiang{
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgb(230, 232, 230);
+            border-radius: 20px;
+            float: left;
+            margin-top: 29px;
+            background-image: url(./pic/programmer.png);
+            background-position: center
+        }
+        .username{
+            color: rgb(153, 154, 153);
+            float: left;
+            margin-left: 5px;
+        }
+
+        .bigcontentbox{
+            width: 1095px;
+            border: 1px ;
+            /* solid rgb(230, 232, 230) */
+            
+            position: relative;
+            margin: 10px auto;
+            padding: 20px;
+            margin-top: 10px;
+
+            
+        }
+
+        .bigcontentbox .row1,
+        .bigcontentbox .row2,
+        .bigcontentbox .row3,
+        .bigcontentbox .row4{
+            vertical-align: top;
+            border: 1px ;
+            /* solid rgb(230, 232, 230) */
+            box-sizing: border-box;
+
+            /* float: left; */
+            position: relative;
+            display: inline-block;
+
+            margin: 0 10px auto;
+            width: 250px;
+            /* height: 200px; */
+        }
+
+        .block{
+            background-color: rgb(253, 254, 253);
+            width: 240px;
+            margin: 10px auto;
+            box-shadow:  0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .imgwrapper img{
+            width: 100%;
+        }
+
+
+        .infoofmo{
+            margin: 0 20px;
+            color: #acaaaa;
+            
+        }
+
+        .infoofmo .title{
+            color: #717171;
+            font-size: 18px;
+            margin: 13px 0 15px 0;
+        }
+        .infoofmo .type,
+        .infoofmo .intro{
+            color: #acaaaa;
+            font-size: 14px;
+        }
+        /* 这是标签图标的mar */
+        .infoofmo .type i{
+            margin: 0 5px;
+        }
+
+        .infoofmo .intro{
+            margin: 18px 5px;
+            line-height: 20px;
+        }
+
+        .block .stars{
+            height: 40px;
+            line-height: 40px;
+            color: #acaaaa;
+            padding: 0 20px;
+            border-top: #e9e9e9 solid 1px;
+        }
+        .stars li{
+            display: inline-block;
+        }
+        
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="nameme">
+            
+            <div class="name1">JustaPage</div>
+            <div class="name2">It is just a page</div>
+        </div>
+
+        <div class="searcharea">
+            <input type="text" class="input" name="Search" placeholder="Search">
+        
+            <button><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+        
+        <div class="userinfo">
+            <div class="touxiang">
+
+            </div>
+            <div class="username">
+                Welcome Amelia
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="bigcontentbox">
+        <div class="row1">
+            <div class="block">
+                <div class="imgwrapper">
+                    <img src="./pic/Depp.png" alt="">
+                </div>
+
+                <div class="infoofmo">
+                    <h2 class="title">
+                        Dark Shadow(2012)
+                    </h2>
+
+                    <h3 class="type">
+                        <i class="fa fa-tags" aria-hidden="true"></i>Comedy,Horror
+                    </h3>
+
+                    <p class="intro">
+                        An imprisoned vampire, Barnabas Collins, is set free and returns to his ancestral home, where his dysfunctional descendants are in need of his protection.
+                    </p>
+
+                </div>
+
+                
+                <div class="stars">
+                    <ul>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="imgwrapper">
+                    <img src="./pic/greenbook.png" alt="">
+                </div>
+
+                <div class="infoofmo">
+                    <h2 class="title">
+                        Green Book (2018)
+                    </h2>
+
+                    <h3 class="type">
+                        <i class="fa fa-tags" aria-hidden="true"></i>Comedy,History
+                    </h3>
+
+                    <p class="intro">
+                        Tony is given a copy of the Green Book by Don's record studio: a guide for black travelers to find safe havens throughout the segregated South. 
+                    </p>
+
+                </div>
+               
+                <div class="stars">
+                    <ul>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row2">
+            <div class="block">
+                <div class="imgwrapper">
+                    <img src="./pic/forrest.png" alt="">
+                </div>
+
+                <div class="infoofmo">
+                    <h2 class="title">
+                        Forrest Gump (1994)
+                    </h2>
+
+                    <h3 class="type">
+                        <i class="fa fa-tags" aria-hidden="true"></i>Drama,Romance
+                    </h3>
+
+                    <p class="intro">
+                        The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75...
+                    </p>
+
+                </div>
+                
+                <div class="stars">
+                    <ul>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="imgwrapper">
+                    <img src="./pic/Depp.png" alt="">
+                </div>
+
+                <div class="infoofmo">
+                    <h2 class="title">
+                        Dark Shadow(2012)
+                    </h2>
+
+                    <h3 class="type">
+                        <i class="fa fa-tags" aria-hidden="true"></i>Comedy,Horror
+                    </h3>
+
+                    <p class="intro">
+                        An imprisoned vampire, Barnabas Collins, is set free and returns to his ancestral home, where his dysfunctional descendants are in need of his protection.
+                    </p>
+
+                </div>
+
+                
+                <div class="stars">
+                    <ul>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row3">
+            <div class="block">
+                <div class="imgwrapper">
+                    <img src="./pic/godfathe.png" alt="">
+                </div>
+
+                <div class="infoofmo">
+                    <h2 class="title">
+                        The Godfather (1972)
+                    </h2>
+
+                    <h3 class="type">
+                        <i class="fa fa-tags" aria-hidden="true"></i>Crime,Drama
+                    </h3>
+
+                    <p class="intro">
+                        Everything I do with my power, including something criminal, I just want to protect my family and my friends.
+                    </p>
+
+                </div>
+                
+                <div class="stars">
+                    <ul>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="imgwrapper">
+                    <img src="./pic/greenbook.png" alt="">
+                </div>
+
+                <div class="infoofmo">
+                    <h2 class="title">
+                        Green Book (2018)
+                    </h2>
+
+                    <h3 class="type">
+                        <i class="fa fa-tags" aria-hidden="true"></i>Comedy,History
+                    </h3>
+
+                    <p class="intro">
+                        Tony is given a copy of the Green Book by Don's record studio: a guide for black travelers to find safe havens throughout the segregated South. 
+                    </p>
+
+                </div>
+               
+                <div class="stars">
+                    <ul>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row4">
+            <div class="block">
+                <div class="imgwrapper">
+                    <img src="./pic/greenbook.png" alt="">
+                </div>
+
+                <div class="infoofmo">
+                    <h2 class="title">
+                        Green Book (2018)
+                    </h2>
+
+                    <h3 class="type">
+                        <i class="fa fa-tags" aria-hidden="true"></i>Comedy,History
+                    </h3>
+
+                    <p class="intro">
+                        Tony is given a copy of the Green Book by Don's record studio: a guide for black travelers to find safe havens throughout the segregated South. 
+                    </p>
+
+                </div>
+               
+                <div class="stars">
+                    <ul>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="imgwrapper">
+                    <img src="./pic/Depp.png" alt="">
+                </div>
+
+                <div class="infoofmo">
+                    <h2 class="title">
+                        Dark Shadow(2012)
+                    </h2>
+
+                    <h3 class="type">
+                        <i class="fa fa-tags" aria-hidden="true"></i>Comedy,Horror
+                    </h3>
+
+                    <p class="intro">
+                        An imprisoned vampire, Barnabas Collins, is set free and returns to his ancestral home, where his dysfunctional descendants are in need of his protection.
+                    </p>
+
+                </div>
+
+                
+                <div class="stars">
+                    <ul>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+    "students":[
+        {
+            "id":"001",
+            "name":"Tom",
+            "age":18
+        },
+        {
+            "id":"002",
+            "name":"Jerry",
+            "age":19
+        },
+        {
+            "id":"003",
+            "name":"TonyStark",
+            "age":34
+        }
+    ],
+
+    "cars":[
+        {
+            "id":"001",
+            "name":"Mercedes",
+            "price":199
+        },
+        {
+            "id":"002",
+            "name":"Ferrari",
+            "price":266
+        },
+        {
+            "id":"003",
+            "name":"Honda",
+            "price":19
+        }
+    ]
+}

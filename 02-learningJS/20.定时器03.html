@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #bfc;
+            position: absolute;
+            left: 0;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 200px;
+        }
+    </style>
+    <script src="./21.movetool.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            //get box1
+            var box1 = document.getElementById("box1");
+            //get btn01
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            //put it outside所有正在执行的定时器都在这里保存，不同元素使用同一个会冲突
+            //var timer;
+            //click on btn01 ,box1 move to the right
+            btn01.onclick = function () {
+                move(box1,"left",800,10);
+            }
+            btn02.onclick = function(){
+                move(box1,"left",0,10);
+            }
+
+            var btn03 = document.getElementById("btn03");
+            btn03.onclick = function(){
+                move(box2,"left",800,20);
+            }
+
+            var btn04 = document.getElementById("btn04");
+            btn04.onclick = function(){
+                //move(box2,"width",800,20);
+                move(box2,"width",800,10,function(){
+                    move(box2,"height",200,10,function(){
+                        move(box2,"top",500,10,function(){
+
+                        });
+                    });
+                });
+            }
+
+
+            
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01" type="button">点击按钮以后box1向右移动</button>
+    <button id="btn02">点击按钮以后box1向左移动</button>
+    <button id="btn03">点击按钮以后box2向右移动</button>
+    <button id="btn04">test</button>
+    <br><br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div style="width: 0px; height:1000px; border-left: 1px solid black; position: absolute;top: 0px; left: 800px;">
+    </div>
+</body>
+
+</html>

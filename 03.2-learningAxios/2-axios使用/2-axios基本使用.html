@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link crossorigin="anonymous" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">基本使用</h2>
+        <button class="btn btn-primary">发送get请求</button>
+        <button class="btn btn-warning">发送post请求</button>
+        <button class="btn btn-success">发送put请求</button>
+        <button class="btn btn-danger">发送delete请求</button>
+
+    </div>
+    <script>
+        const btns = document.querySelectorAll('button');
+
+        btns[0].onclick = function(){
+            //发送ajax请求
+            axios({
+                // 请求类型
+                method:'GET',
+                //url
+                url:'http://localhost:3000/posts/2',
+            }).then(response =>{
+                console.log('收到收到over！');
+            });
+        }
+
+        btns[1].onclick = function(){
+            axios({
+                method:'POST',
+                url:'http://localhost:3000/posts',
+                //设置请求体
+                data:{
+                    title:"today the weather is not so bad",
+                    author:"me"
+                }
+            }).then(response =>{
+                console.log(response);
+            });
+        }
+
+        btns[2].onclick =function(){
+            axios({
+                method:'PUT',
+                url:'http://localhost:3000/posts/4',
+                data:{
+                    title:"就是改一下",
+                    author:"改了"
+                }
+            }).then(response =>{
+                console.log(response);
+                console.log("确实改了");
+
+            });
+        }
+
+        btns[3].onclick =function(){
+            axios({
+                method:'DELETE',
+                url:'http://localhost:3000/posts/6',
+                
+            }).then(response =>{
+                console.log(response);
+                console.log("确实delete了");
+
+            });
+        }
+    </script>
+</body>
+</html>

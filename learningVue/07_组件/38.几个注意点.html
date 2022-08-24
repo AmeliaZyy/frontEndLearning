@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        几个注意点：
+            1.关于组件名：
+                一个单词组成：可以用全小写，或首字母大写；
+                多个单词组成：kebab-case,或CamelCase(需要vue脚手架支持)
+                备注：组件名需要尽可能回避HTML里已有的元素名称，例如h2，H2； 可以使用name配置项指定组件在开发者工具中呈现的名字。
+
+            2.关于组件标签：
+                第一种写法：<component></compponent>
+                第二种写法：<school/>(需要vue脚手架支持)
+                备注：不使用脚手架时，<school/>会导致后续组件不能渲染。
+
+            3.一个简写方式：
+                    const school = Vue.extend(options)
+                    可以简写为：const school = options
+     -->
+    <div id="root">
+        <so-cool></so-cool>
+        <school></school>
+        <h3>the weather there is so {{weather}}</h3>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+
+    const s = Vue.extend({
+        template:`
+        <div>
+            <h2>I was graduated on {{schoolName}}</h2>
+        </div>
+        `,
+        data(){
+            return{
+                schoolName:'Hainan University'
+            }
+        }
+    });
+    //简写,不写extend的话会在注册的时候自动包上
+    const ss ={
+        name:'eihei',
+        template:`
+        <div>
+            <h2>I am a badass {{position}}</h2>
+        </div>
+        `,
+        data(){
+            return{
+                position:'front-end developer'
+            }
+        }
+    };
+
+    Vue.component('so-cool',ss)
+    new Vue({
+        el: '#root',
+        data: {
+            weather:'hot'
+        },
+        components:{
+            school:s
+        }
+    })
+</script>
+
+</html>

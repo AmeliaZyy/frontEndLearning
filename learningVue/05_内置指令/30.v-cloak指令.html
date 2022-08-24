@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+    <!-- 引入vue 哦哟还真是五秒才出来 -->
+    <!-- <script src="http://localhost:8080/resource/5s/vue.js"></script> -->
+
+<body>
+    <!-- 
+        v-cloak指令（没有值）：
+        1.本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删除掉v-cloak属性。
+        2.使用css配合v-cloak可以解决网速慢时页面展示出未经解析的模板如{{xxx}}的问题。
+     -->
+    <div id="root">
+        <div v-cloak>可以展示哦{{name}}</div>
+    </div>
+    <!-- 如果咱们在这里引入 上面显示 但vue效果不显示 -->
+    <script src="http://localhost:8080/resource/5s/vue.js"></script>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+    new Vue({
+        el: '#root',
+        data: {
+            name:'Ameliaaa',
+
+        }
+    })
+</script>
+
+</html>

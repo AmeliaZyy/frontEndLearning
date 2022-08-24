@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #bfc;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            //get box1
+            var box1 = document.getElementById("box1");
+            //get btn01
+            var btn01 = document.getElementById("btn01");
+            //put it outside
+            var timer;
+            //click on btn01 ,box1 move to the right
+            btn01.onclick = function () {
+                //clear the last interval
+                clearInterval(timer);
+
+                //set a interval
+                timer = setInterval(function () {
+                    //get original left of box1
+                    //but we want this to be useful to more condition, so it cannot be "offsetLeft", it should be a more variable value
+                    //getStyle has its unit, so we need to remove that and convert it into a int
+                    var oldValue = parseInt(getStyle(box1, "left"));
+
+                    //add on oldv
+                    var newValue = oldValue + 10;
+
+                    if(newValue > 800){
+                        newValue = 800;
+                    }
+
+                    //give new value to box1
+                    box1.style.left = newValue + "px";
+
+                    //make it stop after 800px
+                    if(newValue == 800){
+                        clearInterval(timer);
+                    }
+
+                }, 30);
+            }
+
+            function getStyle(obj, name) {
+                if (window.getComputedStyle) {
+                    //normal browser has this function
+                    return getComputedStyle(obj, null)[name];
+                } else {
+                    //IE8 has no getCompSty()
+                    return obj.currentStyle[name];
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01" type="button">点击按钮以后box1向右移动</button>
+    <br><br>
+    <div id="box1"></div>
+    <div style="width: 0px; height:1000px; border-left: 1px solid black; position: absolute;top: 0px; left: 800px;">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 无序列表ul里只能包含li，li里可以包含任何内容 -->
+    <ul>
+        <li>榴莲</li>
+        <li>香蕉</li>
+        <li>苹果</li>
+        <li>火龙果</li>
+    </ul>
+    <br>
+    <!-- 有序列表ol 有默认序号标识-->
+    <ol>
+        <li>张三：100</li>
+        <li>李四：80</li>
+        <li>王五：60</li>
+    </ol>
+    <br>
+    <!-- 自定义列表dl整体-dt标题-dd内容 -->
+    <dl>
+        <dt>帮助中心</dt>
+        <dd>嫖鸡鸡-韩国炸鸡</dd>
+        <dd>嫖鸭儿-北京烤鸭</dd>
+        <dd>报警</dd>
+    </dl>
+    <hr>
+    <!-- table-tr排-td单元格 -->
+    <!-- 属性border/width/height -->
+
+    <table border="1" width="500" height="200">
+        <tr>
+            <td>姓名</td>
+            <td>成绩</td>
+            <td>评语</td>
+        </tr>
+        <tr>
+            <td>滢滢</td>
+            <td>135分</td>
+            <td>真棒</td>
+        </tr>
+        <tr>
+            <td>郭德纲</td>
+            <td>120分</td>
+            <td>没有郭德纲相声早黄了</td>
+        </tr>
+    </table>
+    <br>
+        <!-- 表格大标题caption，写在table里下行；表头单元格th，用于替换td -->
+    <table border="1">
+        <caption><strong>排班表</strong></caption>
+        <tr>
+            <th>姓名</th>
+            <th>尺寸</th>
+            <th>值班日期</th>
+            <th>价格</th>
+        </tr>
+        <tr>
+            <td>韩国炸鸡</td>
+            <td>36C</td>
+            <td>周六晚</td>
+            <td>2000</td>
+        </tr>
+        <tr>
+            <td>北京烤鸭</td>
+            <td>20cm</td>
+            <td>周五晚</td>
+            <td>1500</td>
+        </tr>
+    </table>
+    <!-- thead表格头部 tbody tfoot表脚 -->
+    <!-- 跨行合并rowspan 跨列合并colspan 不能跨结构比如body和foot合并-->
+    <table border="1">
+        <caption><strong>信息更新了</strong></caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>尺寸</th>
+                <th>值班日期</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>韩国炸鸡</td>
+                <td rowspan="2">36C</td>
+                <td>周六晚</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>北京烤鸭</td>
+                
+                <td>周五晚</td>
+                <td>1500</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>这是表脚</td>
+                <td colspan="2">没有了</td>
+                
+                <td>卖光了</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

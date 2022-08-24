@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+//width in disigned sample
+@total-width:750;
+//root element
+html{
+    //set rem
+    font-size: calc(100vw/7.5);
+    background-color: #eff0f4;
+}
+
+//a generality for the later to extend
+.w{
+    width: 6.93rem;
+    margin: 0 auto;
+}
+
+
+
+//set the header,it can extend the general width
+.topbar:extend(.w){
+    
+    height: 1.75rem;
+    //set as a flexible container
+    display: flex;
+    //set the alignment on the main axis
+    justify-content: space-between;
+    //set the alignment on the other axis
+    align-items: center;
+
+    a{
+        color: #24253d;
+        font-size: 30px;
+        text-decoration: none;
+
+        i{
+            color: #999;
+            font-size: 20px;
+        }
+    }
+}
+
+.banner:extend(.w){
+    img{
+        width: 100%;
+    }
+}
+
+.menu:extend(.w){
+    height: 3.29rem;
+
+    display: flex;
+
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: space-around;
+
+    a{
+        text-decoration: none;
+        width: 3.27rem;
+        height: 1.04rem;
+        line-height: 1.04rem;
+        font-size: 16px;
+
+        color: white;
+        border-radius: 0.1rem;
+
+        i{
+            margin: 0 0.2rem 0 0.38rem;
+        }
+    }
+
+    .course{
+        background-color: #f97053;
+    }
+    .star{
+        background-color: #cd6efe;
+    }
+    .sub{
+        background-color: #fe4479;
+    }
+    .download{
+        background-color: #1bc4fb;
+    }
+}
+
+.courseli:extend(.w){
+    
+    .title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2{
+            font-size: 0.5rem;
+        }
+
+        a{
+            
+            font-size: 0.3rem;
+            text-decoration: none;
+        }
+    }
+
+    .itemli{
+        display: flex;
+        overflow: scroll;
+        .item{
+            width: 3.5rem;
+            height: 3.7rem;
+            margin: 0.2rem;
+            margin-left: 0;
+
+            padding: 0.2rem;
+            box-sizing: border-box;
+
+            background-color: #fff;
+            border-radius: 10px;
+
+            text-align: center;
+
+            .cover{
+                width: 3rem;
+                // height: 2rem;
+                overflow: hidden;
+            }
+
+            .coursetitle{
+                text-align: left;
+                font-size: 0.3rem;
+                margin-bottom: 0.2rem;
+                
+            }
+            .user-info{
+                display: flex;
+                
+                align-items:center;
+                .avatar{
+                    width: 0.6rem;
+                    height: 0.6rem;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    text-align: center;
+                    
+                }
+                font-size: 0.3rem;
+
+                .username{
+                    padding-left: 0.2rem;
+                    color:#999;
+                }
+            }
+        }
+    }
+}

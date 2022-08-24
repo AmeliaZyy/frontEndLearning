@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+            position: absolute;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+
+            drag(box1);
+            
+            function drag(obj) {
+                obj.onmousedown = function (event) {
+                    //这里本来应该加一句兼容处理那句话的，欸嘿 好像确实不用。
+
+                    /*
+                    setCapture()只有IE支持，火狐调用不会报错，谷歌调用会报错。
+                    if（box1.setCapture）{
+                        box1.setCapture();
+                    }*/
+                    obj.setCapture && obj.setCapture();
+                    //需要在点击的时候获取鼠标的可见x，减去盒子的边框到墙的offset距离，这样鼠标才能点哪儿就从哪儿开始拽，不会一直怼着盒子左上角
+                    //div的偏移量= 鼠标.clientX - 元素.offsetLeft
+                    //鼠标.clientY-元素offsetTop
+                    var inleft = event.clientX - obj.offsetLeft;
+                    var intop = event.clientY - obj.offsetTop;
+
+                    //为document绑定一个onmousemove
+                    //什么时候我们需要传入event呢，这个event是个事件对象，封装了当前事件相关的一切信息
+                    document.onmousemove = function (event) {
+                        //解决兼容问题，虽然现在好像不用了
+                        event = event || window.event;
+
+                        //获取鼠标的坐标 去掉鼠标和盒子相对偏移量
+                        var left = event.clientX - inleft;
+                        var top = event.clientY - intop;
+
+                        //修改box1的位置,style的属性需要px
+                        //
+                        obj.style.left = left + "px";
+                        obj.style.top = top + "px";
+                    }
+
+                    //这个事件设置给document的话，不会导致box1被别的元素遮住就无法抬起鼠标
+                    document.onmouseup = function () {
+                        document.onmousemove = null;
+
+                        //把document的抬起鼠标事件也取消掉，这样不会因为在box1外面抬起鼠标也一直触发这个函数
+                        document.onmouseup = null;
+
+                        //当鼠标松开，取消元素对事件的捕获，现在应该可以研究新的releasePointerCapture
+                        obj.releaseCapture && obj.releaseCapture();
+                    }
+
+                    /*
+                    拖拽有时候会导致文字一起拖了网页跑去搜索文字了，是浏览器默认的，可能会导致拖拽功能异常，如果不希望发生，可以通过return false来取消
+                    */
+
+                    return false;
+
+                }
+            }
+            //当鼠标在被拖拽元素上按下
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东导航</title>
+    <!-- 重置样式 -->
+    <link rel="stylesheet" href="../resetcss/reset.css">
+    <!-- 导入iconfont -->
+    <link rel="stylesheet" href="../font/css/font-awesome.css">
+    <style>
+        /* 公式清除浮动影响，解决高度塌陷问题 */
+        .clearfix::before,
+        .clearfix::after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        body{
+            font: 12px/1.5 Microsoft YaHei, Heiti SC,tahoma, arial, sans-serif;
+            color: #999;
+        }
+        .wrapper{
+            width: 100%;
+            background-color: #e3e4e5;
+            /* 文字垂直居中 */
+            height: 30px;
+            line-height: 30px;
+            border-bottom: #ddd solid;
+        }
+
+        .topnavi{
+            
+            width: 1190px;
+            /* 设置水平居中 */
+            margin: 0 auto;
+        }
+
+        .city{
+            float: left;
+        }
+
+        .currentcity{
+            
+            padding: 0 10px;
+            /* 先让边框透明就不会移动，其实也可以用boxsize吧 */
+            display: block;
+            border: 1px solid transparent;
+            border-bottom: none;
+
+            position: relative;
+            /* 要让它多出来的那一px，优先级高于list然后盖住那一点边框 */
+            z-index: 1000;
+        }
+        /* 设置在父元素上，鼠标移动到兄弟的时候自己才不会失去样式 */
+        .city:hover .currentcity{
+            /* 不然这个显示的时候就是一个没上没下的 */
+            display: inline-block;
+            background-color: white;
+            border: 1px solid rgb(204, 204, 204);
+            border-bottom: none;
+            padding-bottom: 1px;
+        }
+        /* 当鼠标移入city，让citylist显示 */
+        /* 当鼠标移入父元素，子元素的样式 */
+        .city:hover .citylist{
+            display: block;
+        }
+        .city .citylist{
+            /* 宽高固定下 */
+            width: 360px;
+            height: 450px;
+            /* 绝对定位脱离文档流 */
+            position: absolute;
+            top: 31px;
+            /* 显示优先级 */
+            z-index: 999;
+            /* 背景颜色和边框和阴影设置下 */
+            background-color: white;
+            border: rgb(204, 204, 204) solid 1px;
+            box-shadow:0 2px 2px #999;
+            /* 隐藏 */
+            display: none;
+
+
+        }
+
+        /* 这一块右浮动，再把里面的内容左浮动 */
+        .content{
+            float: right;
+        }
+        .content li{
+            float: left;
+            
+        }
+        .content li:not(:last-of-type):after{
+            content: "|";
+            margin: 0 10px;
+        }
+
+        /* 字体颜色统一设置一下 */
+        .content a,
+        .content span,
+        .content i,
+        .city a{
+            text-decoration: none;
+            color: rgb(153, 153, 153);
+        }
+        /* 设置红色，别忘了类之间打空格 */
+        .topnavi .city .red,
+        .topnavi .content .red,
+        .topnavi a:hover{
+            color: #f10215;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper clearfix">
+        <div class="topnavi">
+            <div class="city">
+                
+                <a href="#" class="currentcity">
+                    <i class="fa fa-map-marker red" aria-hidden="true" style="font-size: 14px;"></i>
+                    广东
+                </a>
+                <div class="citylist">
+
+                </div>
+            </div>
+
+            <ul class="content">
+                <li>
+                    <a href="#" class="login">你好，请登录</a>
+                    &nbsp;&nbsp;
+                    <a href="#" class="register red">免费注册</a>
+                </li>
+                <li>
+                    <a href="#">我的订单</a>
+                </li>
+                <li>
+                    <a href="#">我的京东</a>
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <a href="#">京东会员</a>
+                </li>
+                <li>
+                    <a href="#" class="red">企业采购</a>
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </li>
+                <li>
+                    客户服务
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </li>
+                <li>
+                    网站导航
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </li>
+                <li>
+                    手机京东
+                </li>
+                <li>
+                    网站无障碍
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

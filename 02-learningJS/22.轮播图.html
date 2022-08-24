@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../resetcss/reset.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 256px;
+            height: 123px;
+
+            margin: 50px auto;
+            background-color:crimson ;
+            padding: 10px 0;
+
+            position: relative;
+            overflow:hidden;
+
+        }
+        #imgList{
+            position: absolute;
+            width: 1024px;
+            
+        }
+        #imgList li{
+            float: left;
+            margin: 0 10px;
+        }
+        #navDiv{
+            position: absolute;
+
+            bottom: 10px;
+            /*outer 256
+            navdiv 80
+            256-80=176
+            176/2=88*/
+            /*left: 88px;*/
+        }
+        #navDiv a{
+            float: left;
+            width: 10px;
+            height: 10px;
+            background-color:gray;
+            margin: 0 5px;
+            /*透明度与兼容IE8*/
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+
+        }
+        #navDiv a:hover{
+            background-color: whitesmoke;
+        }
+    </style>
+    <!-- 引用工具 -->
+    <script type="text/javascript" src="./21.movetool.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            //设置imgList宽度
+            var imgList = document.getElementById("imgList");
+            var imgArr = document.getElementsByTagName("img");
+            imgList.style.width = 256 * imgArr.length + "px";
+
+            //设置导航按钮居中
+            var navDiv = document.getElementById("navDiv");
+            var outer = document.getElementById("outer");
+            navDiv.style.left = (outer.offsetWidth-navDiv.offsetWidth)/2 + "px";
+
+            //默认显示图片的索引
+            var index = 0;
+            //获取所有a
+            var allA = document.getElementsByTagName("a");
+            //设置默认选中的效果
+            allA[index].style.backgroundColor = "whitesmoke";
+            //点击超链接切换到指定图片,为所有超链接绑定单击响应函数
+            for(var i = 0 ; i<allA.length; i++){
+                //为每一个超链接都添加一个num属性
+                allA[i].num = i;
+                allA[i].onclick = function(){
+
+                    //关闭自动切换的定时器先
+                    clearInterval(timer);
+                    //获取点击超链接的索引，将其设置为index
+                    index = this.num;
+                    //切换图片
+                    //imgList.style.left = -256*index + "px";
+                    move(imgList,"left",-256*index,20,function(){
+                        //点击执行完毕之后让图片继续轮播
+                        autoChange();
+                    });
+                    //修改正在选中的a
+                    setA();
+
+                };
+            }
+            // 自动切换图片
+            autoChange();
+            
+            function setA(){
+                for(var i=0; i<allA.length; i++){
+                    //判断当前索引是否是最后一张，是的话把最后一张切换成第一张
+                    if(index>=imgArr.length - 1){
+                        index = 0;
+                        imgList.style.left = 0;
+                    }
+                    //遍历所有a将背景颜色 不能设置为灰色不然内联优先会覆盖掉设置的hover，所以设置个空的就ok去掉内联
+                    allA[i].style.backgroundColor = "";
+                }
+                //让轮回选中的亮起
+                allA[index].style.backgroundColor = "whitesmoke";
+            };
+
+            var timer;
+            function autoChange(){
+                timer = setInterval(function(){
+                    //使索引自增
+                    index++;
+                    //判断index边际
+                    index %= imgArr.length;
+                    //执行动画，切换图片
+                    move(imgList,"left",-256*index,20,function(){
+                        //同时修改导航按钮
+                        setA();
+                    })
+                },3000);
+            };
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="imgList">
+            <li><img src="../excerciseBili/pic/pic01.png"></li>
+            <li><img src="../excerciseBili/pic/pic02.png"></li>
+            <li><img src="../excerciseBili/pic/pic03.png"></li>
+            <li><img src="../excerciseBili/pic/pic04.png"></li>
+            <li><img src="../excerciseBili/pic/pic01.png"></li>
+        </ul>
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../vue.js"></script>
+
+<body>
+    <div id="root">
+        <!-- 这儿肯定要来个双向绑定撒 -->
+        first name: <input type="text" v-model="firstName">
+        <br>
+        <br>
+        last name: <input type="text" v-model="lastName">
+        <br>
+        <br>
+
+        <!-- full name: <span>{{firstName+'-'+lastName}}</span> -->
+        <!-- 把表达式直接写在元素里不合适，还是另外写个方法吧，记得加括号哦 -->
+        full name: <span>{{fullName()}}</span>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+    new Vue({
+        el: '#root',
+        data: {
+            firstName:'张',
+            lastName:'三'
+        },
+        methods: {
+            fullName(){
+                // 这里要加this哦
+                return this.firstName +'-'+ this.lastName
+            }
+        },
+    })
+</script>
+
+</html>

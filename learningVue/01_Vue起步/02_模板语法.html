@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 原来是老子差点忘了引用vue.js -->
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        Vue模板语法有2大类：
+        1.插值语法：
+            功能：解析标签体内容
+            写法：{{xxx}}，xxx是js表达式，可以直接读取data中的所有属性
+        2.指令语法：
+            功能：解析标签（包括：标签属性，标签体内容，绑定事件等）
+            举例：v-bind:herf="xxx" 或简写为 :herf="xxx",xxx同样是js表达式且可以读取data中所有属性
+            备注：Vue中有很多指令，且形式都是v-？？？
+     -->
+    <div id="root">
+        <h1>插值语法</h1>
+        <h3>你好，{{name}}</h3>
+        <hr>
+        <h1>指令语法</h1>
+        <a v-bind:href="url">点我去百度，{{school.name}}</a>
+        <!-- v-bind:之后的引号url可以变成vue属性里面的值 v-bind：可以简写成冒号 -->
+        <a :href="url">点我去百度啊</a>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        //阻止vue在启动时生成生产提示
+    
+        new Vue({
+            el:'#root',
+            data:{
+                name:'jack',
+                url:'http://www.baidu.com',
+                school:{//怎么老忘了有冒号
+                    name:'haha',//可以这样分组另外搞个对象属性
+                }
+            }
+        })
+    </script>
+</body>
+
+
+</html>

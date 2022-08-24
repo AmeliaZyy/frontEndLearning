@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html,body{
+            perspective: 800px;
+
+        }
+
+        .cube{
+            width: 400px;
+            height: 400px;
+
+            /* position: relative; */
+            margin: 300px auto;
+
+            /* 设置3d变形效果 */
+            transform-style: preserve-3d;
+            animation: cubee 10s infinite linear;
+        }
+        .cube>div{
+            width: 400px;
+            height: 400px;
+
+            opacity: 0.7;
+            position: absolute;
+
+            
+        }
+
+        img{
+            /* 去掉缝缝间隙 */
+            vertical-align: top;
+        }
+
+        .box1{
+            background-image: url(./pic/avengers1.webp);
+            background-size: contain;
+            transform: rotateY(90deg) translateZ(200px);
+            
+        }
+        .box2{
+            background-image: url(./pic/avengers2.webp);
+            background-size: contain;
+
+            transform: rotateY(-90deg) translateZ(200px);
+        }
+
+        .box3{
+            background-image: url(./pic/avengers3.webp);
+            background-size: contain;
+
+            transform: rotateX(90deg) translateZ(200px);
+        }
+        .box4{
+            background-image: url(./pic/avengers4.webp);
+            background-size: contain;
+
+            transform: rotateX(-90deg) translateZ(200px);
+        }
+
+        .box5{
+            background-image: url(./pic/avengers5.webp);
+            background-size: contain;
+
+            transform: rotateY(180deg) translateZ(200px);
+        }
+        .box6{
+            background-image: url(./pic/avengers6.webp);
+            background-size: contain;
+
+            transform:translateZ(200px);
+        }
+
+        @keyframes cubee {
+            from{
+                transform: rotateX(0) rotateZ(0);
+            }
+
+            to{
+                transform: rotateX(360deg) rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="box1">
+            
+        </div>
+
+        <div class="box2">
+            
+        </div>
+
+        <div class="box3">
+        
+        </div>
+
+        <div class="box4">
+        
+        </div>
+
+        <div class="box5">
+        
+        </div>
+
+        <div class="box6">
+        
+        </div>
+
+    </div>
+</body>
+</html>

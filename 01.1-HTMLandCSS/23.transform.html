@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            perspective: 800px;
+            /* 这句取不取消不一样的哦 */
+        }
+        body{
+            border: 1px rebeccapurple solid;
+            background-color: gray;
+        }
+        div{
+            height: 200px;
+            width: 200px;
+            background-color: #bfa;
+            margin: 200px auto;
+
+            transition: 2s;
+        }
+        body:hover .box1{
+            transform: rotateY(160deg) translateZ(400px);
+            /* 这句的先后顺序不一样效果不一样哦 */
+            /* transform: rotateZ(.25turn); */
+            /* 爱的魔力转圈圈 */
+        }
+        
+        span{
+            color: orange;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            /* 这样可以连元素本身大小不管 一起居中 */
+            
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <span>aaaaaa</span>
+</body>
+</html>

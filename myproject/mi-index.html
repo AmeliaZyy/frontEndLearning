@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>小米商城 - Xiaomi 11 Ultra、Redmi K40 Pro、MIX FOLD，小米电视官方网站</title>
+    <link rel="stylesheet" href="./csss/reset.css">
+    <link rel="stylesheet" href="./csss/font/css/font-awesome.css">
+    <link rel="stylesheet" href="./csss/mi-index.css">
+    <!-- 设置网页名字前的图图 -->
+    <link rel="icon" href="./picsss/favicon.ico">
+</head>
+
+<body>
+    <script>
+        window.onload = function(){
+            //这块是让左右按钮可以切换图片
+            var prev = document.getElementById("prevbtn");
+            var next = document.getElementById("nextbtn");
+
+            var img = document.getElementById("switchitem");
+            var index = 0;
+
+            var imgArr = ["./picsss/pic1.webp","./picsss/pic2.webp","./picsss/pic3.webp","./picsss/pic4.jpg"];
+
+            //让小圆点和图片绑定啊
+            var pointer = document.getElementsByClassName("pointer")[0];//是数组记得索引
+            var actArr= pointer.getElementsByTagName("a");
+            //console.log(actArr.length);
+
+            prev.onclick = function(){
+                index--;
+                if(index<0){
+                    index=imgArr.length-1;
+                }
+                img.src = imgArr[index];
+
+                for(var j = 0; j<actArr.length ;j++){
+                    actArr[j].className = '';
+                }
+                actArr[index].className = "active";
+            }
+
+            next.onclick = function(){
+                index++;
+                if(index>imgArr.length-1){
+                    index = 0;
+                }
+                
+                img.src = imgArr[index];
+
+                for(var j = 0; j<actArr.length ;j++){
+                    actArr[j].className = '';
+                }
+                actArr[index].className = "active";
+            }
+
+            function change(){
+                for(var j=0; j<actArr.length ; j++){
+                    actArr[j].className = '';
+                }
+                actArr[index].className = 'active';
+                img.src = imgArr[index];
+            }
+
+            //自动轮播 
+            /*
+            setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+
+            setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。
+
+            提示： 1000 毫秒= 1 秒。
+
+            提示： 如果你只想执行一次可以使用 setTimeout() 方法。
+            */
+            setInterval(function () {
+                console.log(actArr.length);
+                index++;
+                if (index > actArr.length-1 ) {
+                    index = 0;
+                }
+                change();
+            }, 3000)
+
+
+        }
+    </script>
+    <div class="topbar">
+        <div class="container clearfix">
+            <div class="topleft">
+
+                <a href="//www.mi.com/index.html">小米商城</a>
+                <span>|</span>
+                <a href="//www.miui.com/">MIUI</a>
+                <span>|</span>
+                <a href="//iot.mi.com">loT</a>
+                <span>|</span>
+                <a href="//i.mi.com/">云服务</a>
+                <span>|</span>
+                <a href="//airstar.com/home">天星数科</a>
+                <span>|</span>
+                <a href="//youpin.mi.com/">有品</a>
+                <span>|</span>
+                <a href="//xiaoai.mi.com/">小爱开放平台</a>
+                <span>|</span>
+                <a href="//qiye.mi.com/">企业团购</a>
+                <span>|</span>
+                <a href="//www.mi.com/aptitude/list/?id=88">资质证照</a>
+                <span>|</span>
+                <a href="//www.mi.com/aptitude/list/">协议规则</a>
+                <span>|</span>
+                <a href="//www.mi.com/appdownload/">下载app</a>
+                <span>|</span>
+                <a href="javascript:;">Select Location</a>
+
+
+            </div>
+
+
+
+
+            <div class="topcart1">
+                <div class="topcart" id="cartrigger">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        购物车（0）
+                    </a>
+                </div>
+                <div class="cart-hiddenblock">
+                    购物车还没有商品，赶紧选购吧！
+                </div>
+            </div>
+
+            <div class="topright">
+
+                <a href="#">登录</a>
+                <span>|</span>
+                <a href="#">注册</a>
+                <span>|</span>
+                <a href="#">消息通知</a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="upperbox">
+        <div class="container midtop clearfix">
+            <div class="iconbox">
+                <img src="./picsss/logo-mi2.png" alt="">
+            </div>
+
+            <div class="centernavi">
+                <a href="#">全部商品分类</a>
+                <a href="#" class="showitem">Xiaomi手机</a>
+                <a href="#" class="showitem">Redmi手机</a>
+                <a href="#" class="showitem">电视</a>
+                <a href="#" class="showitem">笔记本</a>
+                <a href="#" class="showitem">平板</a>
+                <a href="#" class="showitem">家电</a>
+                <a href="#" class="showitem">路由器</a>
+                <a href="#">服务中心</a>
+                <a href="#">社区</a>
+
+                <div class="showbox">
+
+                </div>
+            </div>
+
+            <div class="searcharea">
+
+                <input type="text" class="searchcon">
+                <button class="searchbut"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+            </div>
+        </div>
+
+        <div class="container bannerbox clearfix">
+            <div class="playlist clearfix">
+                <div class="leftnavi">
+                    <ul>
+                        <li><a href="#">手机</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">电视</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">笔记本 平板</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">出行 穿戴</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">耳机 音响</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">家电</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">智能 路由器</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">电源 配件</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">健康 儿童</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="#">生活 箱包</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+                <div class="banner">
+                    <img id="switchitem" src="./picsss/pic1.webp" alt="">
+                    
+
+                    <div class="pointer">
+                        <a href="#" class="active" id="pointer1"></a>
+                        <a href="#" id="pointer2"></a>
+                        <a href="#" id="pointer3"></a>
+                        <a href="#" id="pointer4"></a>
+                    </div>
+
+                    <div class="prev-next">
+                        <a href="#" class="prev" id="prevbtn"></a>
+                        <a href="#" class="next" id="nextbtn"></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container midmid clearfix">
+            <div class="serviceicon clearfix">
+                <ul>
+                    <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>保障服务</a></li>
+                    <li><a href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i>企业团购</a></li>
+                    <li><a href="#"><i class="fa fa-ticket" aria-hidden="true"></i>F码通道</a></li>
+                    <li><a href="#"><i class="fa fa-id-card-o" aria-hidden="true"></i>米粉卡</a></li>
+                    <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>以旧换新</a></li>
+                    <li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i>话费充值</a></li>
+                </ul>
+            </div>
+
+            <div class="mainitem">
+                <ul class="clearfix">
+                    <li><a href="#"><img src="./picsss/main1.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="./picsss/main2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="./picsss/main3.jpg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="backtotop">
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        <i class="fa fa-mobile" aria-hidden="true"></i>
+        <i class="fa fa-wrench" aria-hidden="true"></i>
+        <i class="fa fa-headphones" aria-hidden="true"></i>
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        事件的基本使用：
+        1.使用v-on:xxx或 @xxx绑定事件，其中xxx是事件名
+        2.事件的回调需要配置在methods对象种，最终会在vm上
+        3.methods配置的函数不要使用箭头函数，否则this不是vm的
+        4.methods中配置的函数，都是被Vue所管理的函数，this的指向是vm 或组件实例对象
+        5.@click="demo" 和 @click="demo($event)" 效果一致，但后者可以传参
+     -->
+    <div id="root">
+        <h2>welcome {{name}}</h2>
+        <!-- <button v-on:click="showInfo">click here to show information</button> -->
+        <button @click="showInfo">click here to show information不传参</button>
+        <button @click="showInfo2($event,66)">click here to show information传参</button>
+    </div>
+
+</body>
+<script>
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+    // function showInfo(){
+    //     alert('hey Amelia')
+    // }
+    //放在这里的话是显示不出来的 因为没有和实例关联上
+    new Vue({
+        el: '#root',
+        data: {
+            name: 'Amelia'
+        },
+        methods: {
+            showInfo(event) {
+                alert('hey Amelia')
+                // console.log(event.target.innerText)
+                //console.log(this)//此处的this是vm
+                //但如果写成showInfo:(event)=>{}就是window的this
+            },
+            showInfo2(event,number) {
+                // alert('hey Amelia')
+                console.log(event.target.innerText)//老师说如果event变成number没有event这行不能输出了但是我还是输出了鸭
+                //console.log(this)//此处的this是vm
+                //但如果写成showInfo:(event)=>{}就是window的this
+                console.log(event,number)
+            }
+        },
+    })
+</script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1.Vue中常用的按键别名：
+        回车：enter
+        删除：delete
+        退出：esc
+        空格：space
+        换行：tab（特殊 建议配合keydown)
+        上：up
+        下：down
+        左：left
+        右：right
+
+        2.未提供别名的按键，可以使用按键原始的Key值去绑定，但注意要转为kebab-case（横短线命名）(如：key值为CapsLock，在修饰符别名时需要用.caps-lock)
+
+        3.系统修时间（用法特殊）：ctrl，alt，shift，meta
+            （1）配合keyup使用：按下修饰键的同事，再按下其他键，随后释放其他键，事件才被触发
+            （2）配合keydown使用：正常触发
+
+        4.也可以用keyCode去指定具体的按键（不推荐）
+
+        5.Vue.config.keyCodes.自定义键名 = 键码 ，可以定制按键别名
+     -->
+    <div id="root">
+        <input type="text" placeholder="按下回车提示输入" @keyup.ctrl.y="showInfo">
+        <!-- 关于系统修饰键 两个点连在一起代表可以连续输出哟！
+            如果是.ctrl.y，前面不管用后面管用 
+        如果是enter和y，两个都各自管用，牛逼-->
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false//阻止Vue在启动时生成生产提示
+
+    new Vue({
+        el: '#root',
+        data: {
+        },
+        methods: {
+            showInfo(e){
+                // if(e.keyCode !== 13) return//一般需要在这里判断是否按下的是enter，但也可以在键盘事件后面加上.enter修饰符判断是否按下的是enter
+                console.log(e.target.value)
+                console.log(e.key,e.keyCode)
+            }
+        },
+    })
+</script>
+
+</html>

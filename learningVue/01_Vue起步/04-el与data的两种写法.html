@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1.el有两种写法
+            a.new Vue时候配置el属性
+            b.先创建Vue实例，随后再通过vm.$mount("#root")指定el的值
+        2.data有2种写法
+            （1）对象式
+            （2）函数式data：function（）{}或者data（）：{}都行
+            如何选择：学到组件时必须使用函数式，否则会报错
+        3.一个重要的原则：
+            由Vue管理的函数，一定不能写箭头函数，写之前this是Vue实例，写之后会向外找window。
+     -->
+    <div id="root">
+        <h1>helo,{{name}}</h1>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false//阻止Vue在启动时生成生产提示
+    //el的两种写法
+    /*
+    const v = new Vue({
+        //el:'#root',//第一种写法
+        data:{
+            name:'hhhhhh'
+        }
+    })
+    console.log(v)
+    v.$mount('#root')//第二种写法
+    */
+
+    //data的两种写法
+    Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+    new Vue({
+        el: '#root',
+        //第一种写法：对象式
+        // data: {
+        //     name:'hhhhhh'
+        // }
+
+        //第二种写法：函数式
+        data:function(){
+            console.log('@@@',this)//此处的this是vue实例对象
+            return{
+                name:"hhhhhhxd"
+            }
+        }
+    })
+
+</script>
+
+</html>

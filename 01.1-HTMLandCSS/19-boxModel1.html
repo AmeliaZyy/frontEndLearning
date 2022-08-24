@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            /* 
+            内容区的大小由width和height属性设置
+            */
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+
+            /* 
+            边框border属于盒子边缘
+            border-width宽度
+            border-color 颜色
+            border-style 样式（虚线实线）
+            */
+            border-width: 10px;
+            border-color: palevioletred;
+            border-style:solid;
+            /* 这个应该是 边的背景还是内容区背景颜色的颜色 相当于把内容加宽了个边*/
+
+            /* 
+            内边距padding是内容区和边框的距离
+            内边距的设置会影响盒子大小
+            背景颜色会延申到内边距上
+            盒子大小由内容+边框+内边距可见大小决定
+            */
+            padding-top: 100px;
+            
+        }
+        .inner{
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="inner">
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .b1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .b2{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+    <script type="text/javascript" src="./21.movetool.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var box = document.getElementById("box");
+
+            //用btn单击响应函数
+            btn01.onclick = function(){
+                //通过style属性修改元素的样式的话，每修改一个样式，浏览器就重新渲染一次页面。执行的性能比较差，修改多个样式也不太方便。如
+                // box.style.width = "200px";
+                // box.style.height = "200px";
+                // box.style.backgroundColor = "yellow";
+                //希望一行代码可以修改多个样式，直接css写另一个类名样式，修改box的class属性,可以间接修改样式，只需重新渲染一次性能比较好，可以使行为和表现进一步分离
+                // box.className = "b2";
+                // addClass(box,"b2");
+                toggleClass(box,"b2");
+
+            };
+        };
+
+        
+    </script>
+</head>
+<body>
+    <button id="btn01">点击按钮修改box</button>
+
+    <br><br>
+
+    <div id="box" class="b1"></div>
+</body>
+</html>
